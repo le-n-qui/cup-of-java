@@ -33,4 +33,10 @@ public class RationalNumberTest
     assertEquals(-2, ratNum2.getNumerator());
     assertEquals(3, ratNum2.getDenominator());
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void checkDenominatorBeingZero()
+  {
+    RationalNumber num = new RationalNumber(3,0);
+  }
 }

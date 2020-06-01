@@ -15,6 +15,9 @@ public class RationalNumber
    */
   public RationalNumber(long n, long d)
   {
+    if (d == 0)
+      throw new IllegalArgumentException("Input for denominator cannot be zero.");
+
     if (d < 0)
     {
       numerator = -n;
@@ -24,6 +27,9 @@ public class RationalNumber
       numerator = n;
       denominator = d;
     }
+
+    // Simplify the fraction to get reduced form
+    //reduce();
   }
 
   /**
@@ -51,5 +57,13 @@ public class RationalNumber
   public final long getDenominator()
   {
     return denominator;
+  }
+
+  /**
+   * Reduce fraction
+   */
+  private void reduce()
+  {
+    return;
   }
 }
