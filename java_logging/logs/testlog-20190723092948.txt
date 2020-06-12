@@ -1,0 +1,3 @@
+Jul 23, 2019 9:29:48 AM TestClass main
+INFO: 
+This is a logged information message.
