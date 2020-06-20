@@ -11,13 +11,15 @@ import org.junit.Test;
 public class RationalNumberTest
 {
   private RationalNumber ratNum1;
-  private  RationalNumber ratNum2;
+  private RationalNumber ratNum2;
+  private RationalNumber ratNum3;
 
   @Before
   public void setUp()
   {
     ratNum1 = new RationalNumber(4,5);
     ratNum2 = new RationalNumber(2, -3);
+    ratNum3 = new RationalNumber(5, 10);
   }
 
   @Test
@@ -38,5 +40,12 @@ public class RationalNumberTest
   public void checkDenominatorBeingZero()
   {
     RationalNumber num = new RationalNumber(3,0);
+  }
+
+  @Test
+  public void testReducedRationalNumber()
+  {
+    assertEquals(1, ratNum3.getNumerator());
+    assertEquals(2, ratNum3.getDenominator());
   }
 }
