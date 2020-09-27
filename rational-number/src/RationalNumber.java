@@ -29,7 +29,7 @@ public class RationalNumber
     }
 
     // Simplify the fraction to get reduced form
-    //reduce();
+    reduce();
   }
 
   /**
@@ -64,6 +64,28 @@ public class RationalNumber
    */
   private void reduce()
   {
-    return;
+    long biggestCommonDenom = gcd(numerator, denominator);
+    numerator /= biggestCommonDenom;
+    denominator /= biggestCommonDenom;
+  }
+
+  /**
+   * Find the greatest common divisor
+   * @param num1 first number
+   * @param num2 second number
+   * @return greatest common divisor
+   */
+  private long gcd(long num1, long num2)
+  {
+    if (num1 < 0)
+      num1 = -num1;
+
+    while (num2 > 0)
+    {
+      long remainder = num1 % num2;
+      num1 = num2;
+      num2 = remainder;
+    }
+    return num1;
   }
 }
