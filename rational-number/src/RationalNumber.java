@@ -95,42 +95,54 @@ public class RationalNumber
    */
   public void add(RationalNumber other)
   {
+    // If denominator of our rational number
+    // is equal to that of other rational number
     if (denominator == other.getDenominator()) {
+      // Just add the numerators together
       numerator += other.getNumerator();
     }
     else {
-      long[] multiples = lowestCommonDenominator(denominator, other.getDenominator());
-      numerator *= multiples[0];
-      denominator *= multiples[0];
-
-      long otherNumerator = other.getNumerator() * multiples[1];
-
+      // Find the numbers that will help convert our rational number
+      // and the other rational number into their equivalent fractions
+      long[] multiplicand = lowestCommonDenominator(denominator, other.getDenominator());
+      // Convert both our numerator and denominator into their equivalents
+      numerator *= multiplicand[0];
+      denominator *= multiplicand[0];
+      // Convert other numerator into the equivalent
+      long otherNumerator = other.getNumerator() * multiplicand[1];
+      // We only need to add other numerator into our numerator
       numerator += otherNumerator;
-
+      // Reduce our rational number
       reduce();
     }
   }
 
   /**
    * Find the lowest common denominator
+   * @param num1 first denominator
+   * @param num2 second denominator
+   * @return lowest common denominator
    */
   private long[] lowestCommonDenominator(long num1, long num2)
   {
     long[] tuple = new long[2];
-    long num1_counter = 1; // num1 is itself included; so start counter at 1
-    long num2_counter = 1; // ditto
-    while (num1 != num2) {
-      if (num1 < num2) {
-        num1 += num1;
-        num1_counter += 1;
+    long denominator1 = num1;
+    long denominator2 = num2;
+    long addCounter1 = 1; // denominator1 is itself included; so start counter at 1
+    long addCounter2 = 1; // ditto
+    // Finding the multiple that is divisible by both denominators
+    while (denominator1 != denominator2) {
+      if (denominator1 < denominator2) {
+        denominator1 += num1;
+        addCounter1 += 1;
       } else {
-        num2 += num2;
-        num2_counter += 1;
+        denominator2 += num2;
+        addCounter2 += 1;
       }
     }
     // Keep counters in array to be returned
-    tuple[0] = num1_counter;
-    tuple[1] = num2_counter;
+    tuple[0] = addCounter1;
+    tuple[1] = addCounter2;
 
     return tuple;
   }
