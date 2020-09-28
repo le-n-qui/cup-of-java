@@ -88,4 +88,50 @@ public class RationalNumber
     }
     return num1;
   }
+
+  /**
+   * Add two rational numbers
+   * @param other other rational number
+   */
+  public void add(RationalNumber other)
+  {
+    if (denominator == other.getDenominator()) {
+      numerator += other.getNumerator();
+    }
+    else {
+      long[] multiples = lowestCommonDenominator(denominator, other.getDenominator());
+      numerator *= multiples[0];
+      denominator *= multiples[0];
+
+      long otherNumerator = other.getNumerator() * multiples[1];
+
+      numerator += otherNumerator;
+
+      reduce();
+    }
+  }
+
+  /**
+   * Find the lowest common denominator
+   */
+  private long[] lowestCommonDenominator(long num1, long num2)
+  {
+    long[] tuple = new long[2];
+    long num1_counter = 1; // num1 is itself included; so start counter at 1
+    long num2_counter = 1; // ditto
+    while (num1 != num2) {
+      if (num1 < num2) {
+        num1 += num1;
+        num1_counter += 1;
+      } else {
+        num2 += num2;
+        num2_counter += 1;
+      }
+    }
+    // Keep counters in array to be returned
+    tuple[0] = num1_counter;
+    tuple[1] = num2_counter;
+
+    return tuple;
+  }
 }
