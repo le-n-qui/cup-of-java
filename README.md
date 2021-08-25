@@ -1,1 +1,1 @@
-This repository will be a collection of projects from Data Structures and Problem Solving Using Java by Mark Allen Weiss, 3rd edition.
+This repository will be a collection of projects from Data Structures and Problem Solving Using Java by Mark Allen Weiss, 3rd edition. Occasionally, there will also be other exercise projects in Java that are not part of the aforementioned textbook. 
